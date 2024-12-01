@@ -3,7 +3,7 @@ package no.nav.jobsearch.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import no.nav.jobsearch.client.dto.Content;
+import no.nav.jobsearch.client.dto.Listing;
 import no.nav.jobsearch.client.dto.JobList;
 import no.nav.jobsearch.data.StatsResponse;
 import org.junit.jupiter.api.Test;
@@ -50,7 +50,7 @@ class FullIntegrationTest {
 
     @SneakyThrows
     private void  buildMockResponse() {
-       Content content = Content.builder()
+       Listing content = Listing.builder()
                 .description("Foo JAva, koTLin BAR")
                .published(LocalDate.now().toString())
                 .build();
@@ -61,7 +61,7 @@ class FullIntegrationTest {
                         .withHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                         .withBody(objectMapper.writeValueAsString(
                                 JobList.builder()
-                                        .content(List.of(content))
+                                        .listings(List.of(content))
                                         .totalElements(1)
                                         .first(true)
                                         .last(true)

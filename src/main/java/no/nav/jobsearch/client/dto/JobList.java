@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class JobList {
 
-    private List<Content> content;
+    private List<Listing> listings;
 
     private int totalElements;
 

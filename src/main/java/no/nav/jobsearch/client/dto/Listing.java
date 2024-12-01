@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class Content {
+public class Listing {
     private String uuid;
 
     private String published;

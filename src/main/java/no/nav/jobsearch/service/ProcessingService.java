@@ -2,7 +2,7 @@ package no.nav.jobsearch.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import no.nav.jobsearch.client.dto.Content;
+import no.nav.jobsearch.client.dto.Listing;
 import no.nav.jobsearch.client.dto.JobList;
 import no.nav.jobsearch.client.NavConsumer;
 import no.nav.jobsearch.data.Stats;
@@ -34,8 +34,8 @@ public class ProcessingService {
 
         while (true) {
             JobList jobList = processPage(week, formattedDateRange, page++);
-            content.addAll(jobList.getContent().stream()
-                    .map(this::fromContent)
+            content.addAll(jobList.getListings().stream()
+                    .map(this::fromListing)
                     .toList());
 
             if (jobList.isLast()) {
@@ -59,16 +59,13 @@ public class ProcessingService {
                 .build();
     }
 
-    private Stats fromContent(Content content) {
-        boolean hasJava = false;
-        boolean hasKotlin = false;
-        if (content.getDescription().toLowerCase().contains("java")) {
-            hasJava = true;
-        }
-        if (content.getDescription().toLowerCase().contains("kotlin")) {
-            hasKotlin = true;
-        }
-        return new Stats(hasJava, hasKotlin);
+    private Stats fromListing(Listing content) {
+        return new Stats(containsKeyword(content, "java"),
+                containsKeyword(content, "kotlin"));
+    }
+
+    private boolean containsKeyword(Listing content, String keyword) {
+        return content.getDescription().toLowerCase().contains(keyword);
     }
 
     private JobList processPage(Week week, String formattedDateRange, int page) {
