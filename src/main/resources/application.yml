@@ -1,0 +1,7 @@
+app:
+  numberOfWeeks: 26
+  client:
+    config:
+      nav:
+        url: "https://arbeidsplassen.nav.no"
+        token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwdWJsaWMudG9rZW4udjJAbmF2Lm5vIiwiYXVkIjoiZmVlZC1hcGktdjEiLCJpc3MiOiJuYXYubm8iLCJleHAiOjE3NDYwNTA0MDAsImlhdCI6MTczMjExMjk2OX0.WHEC0oZgzZQjut1n2ZQK2xtW2gPhUCaBzTup2aqF2Wk"

@@ -1,0 +1,8 @@
+app:
+  numberOfWeeks: 1
+  client:
+    config:
+      nav:
+        url: http://localhost:${wiremock.server.port}
+        token: TEST
+
