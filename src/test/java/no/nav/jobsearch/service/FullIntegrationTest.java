@@ -61,7 +61,7 @@ class FullIntegrationTest {
                         .withHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                         .withBody(objectMapper.writeValueAsString(
                                 JobList.builder()
-                                        .listings(List.of(content))
+                                        .content(List.of(content))
                                         .totalElements(1)
                                         .first(true)
                                         .last(true)

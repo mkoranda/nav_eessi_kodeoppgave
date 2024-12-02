@@ -34,7 +34,7 @@ public class ProcessingService {
 
         while (true) {
             JobList jobList = processPage(week, formattedDateRange, page++);
-            content.addAll(jobList.getListings().stream()
+            content.addAll(jobList.getContent().stream()
                     .map(this::fromListing)
                     .toList());
 
